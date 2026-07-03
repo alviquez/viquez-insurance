@@ -292,6 +292,83 @@
   }
 
   /* ---------- responsive ---------- */
+  /* ---------- get a quote ---------- */
+  #vis-site .quote-section {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: clamp(28px, 5vw, 64px);
+    align-items: start;
+  }
+  #vis-site .quote-intro { position: sticky; top: 24px; }
+  #vis-site .quote-form {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: clamp(24px, 3.5vw, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  #vis-site .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  #vis-site .field { display: flex; flex-direction: column; gap: 7px; }
+  #vis-site .field label {
+    font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600;
+  }
+  #vis-site .field .req { color: var(--brass); margin-left: 2px; }
+  #vis-site .field input[type="text"],
+  #vis-site .field input[type="tel"],
+  #vis-site .field input[type="email"],
+  #vis-site .field select,
+  #vis-site .field textarea {
+    font-family: var(--sans);
+    font-size: .98rem;
+    color: var(--text);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 11px 13px;
+    width: 100%;
+    transition: border-color .15s ease;
+  }
+  #vis-site .field input:focus,
+  #vis-site .field select:focus,
+  #vis-site .field textarea:focus { outline: none; border-color: var(--brass); }
+  #vis-site .field textarea { resize: vertical; min-height: 90px; font-family: var(--sans); }
+
+  #vis-site .chip-group { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 2px; }
+  #vis-site .chip { position: relative; }
+  #vis-site .chip input { position: absolute; opacity: 0; width: 0; height: 0; }
+  #vis-site .chip span {
+    display: inline-block;
+    font-size: .86rem;
+    padding: 9px 15px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: all .15s ease;
+    user-select: none;
+  }
+  #vis-site .chip input:checked + span { background: var(--ink); border-color: var(--ink); color: #fff; }
+  #vis-site .chip input:focus-visible + span { outline: 2px solid var(--brass-2); outline-offset: 2px; }
+
+  #vis-site .consent-check {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: .84rem; color: var(--muted); line-height: 1.5; cursor: pointer;
+  }
+  #vis-site .consent-check input { margin-top: 3px; flex-shrink: 0; }
+  #vis-site .consent-check a { color: var(--brass); border-bottom: 1px solid rgba(151,101,31,.3); }
+
+  #vis-site .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  #vis-site .quote-form .btn { align-self: flex-start; }
+  #vis-site .quote-form .btn[disabled] { opacity: .6; cursor: not-allowed; transform: none; }
+
+  #vis-site .form-status { font-size: .9rem; min-height: 1px; }
+  #vis-site .form-status.success { color: var(--ink); background: var(--panel); border-radius: 10px; padding: 14px 16px; }
+  #vis-site .form-status.error { color: #8a2e2e; }
+
   @media (max-width: 720px) {
     #vis-site { font-size: 15.5px; }
     #vis-site .masthead { align-items: center; }
@@ -300,6 +377,9 @@
     #vis-site .service { border-right: 0 !important; }
     #vis-site .approach-grid { grid-template-columns: 1fr; }
     #vis-site .contact-card { grid-template-columns: 1fr; }
+    #vis-site .quote-section { grid-template-columns: 1fr; }
+    #vis-site .quote-intro { position: static; }
+    #vis-site .form-row { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -321,7 +401,8 @@
       <h1>Coverage that fits the business you&rsquo;ve built.</h1>
       <p class="lead">Viquez Insurance Services helps owners across California and Texas secure general liability, workers&rsquo; compensation, and commercial coverage&mdash;matched to how your business actually operates, drawn from multiple carriers and chosen on your behalf.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="tel:+13105986201">Call or text 310.598.6201</a>
+        <a class="btn btn-primary" href="#get-a-quote">Get a Quick Insurance Quote</a>
+        <a class="btn btn-ghost" href="tel:+13105986201">Call or text 310.598.6201</a>
         <a class="btn btn-ghost" href="mailto:mviquez@orrandassociates.com">Email Michelle</a> <!-- >>> REPLACE email <<< -->
       </div>
       <div class="coverage-strip">
@@ -378,6 +459,197 @@
       </div>
     </section>
   </div>
+
+  <!-- ===================== GET A QUOTE ===================== -->
+  <div class="wrap band" id="get-a-quote">
+    <section class="quote-section">
+      <div class="quote-intro">
+        <p class="eyebrow">Get a Quote</p>
+        <h2>Tell us about the business.</h2>
+        <p class="section-intro">Share a few details and Michelle will follow up personally with options that fit&mdash;usually within one business day.</p>
+
+        <div class="contact-card" style="margin-top: 32px;">
+          <div class="row">
+            <div class="k">Prefer to talk?</div>
+            <div class="v"><a href="tel:+13105986201">310.598.6201</a></div>
+          </div>
+          <div class="row">
+            <div class="k">Email directly</div>
+            <div class="v"><a href="mailto:mviquez@orrandassociates.com">mviquez@orrandassociates.com</a></div>
+          </div>
+        </div>
+      </div>
+
+      <form id="quote-form" class="quote-form" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="q-fullName">Full name<span class="req">*</span></label>
+            <input type="text" id="q-fullName" name="fullName" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="q-businessName">Business name</label>
+            <input type="text" id="q-businessName" name="businessName" autocomplete="organization">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="q-phone">Phone<span class="req">*</span></label>
+            <input type="tel" id="q-phone" name="phone" required autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="q-email">Email<span class="req">*</span></label>
+            <input type="email" id="q-email" name="email" required autocomplete="email">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="q-state">State</label>
+            <select id="q-state" name="state">
+              <option value="">Select&hellip;</option>
+              <option value="California">California</option>
+              <option value="Texas">Texas</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="q-employees">Number of employees</label>
+            <select id="q-employees" name="employees">
+              <option value="">Select&hellip;</option>
+              <option value="Just me">Just me</option>
+              <option value="2-5">2&ndash;5</option>
+              <option value="6-15">6&ndash;15</option>
+              <option value="16-50">16&ndash;50</option>
+              <option value="50+">50+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Coverage interested in</label>
+          <div class="chip-group">
+            <label class="chip"><input type="checkbox" name="coverage" value="General Liability"><span>General Liability</span></label>
+            <label class="chip"><input type="checkbox" name="coverage" value="Workers' Compensation"><span>Workers&rsquo; Compensation</span></label>
+            <label class="chip"><input type="checkbox" name="coverage" value="Business Owner Policy (BOP)"><span>Business Owner Policy</span></label>
+            <label class="chip"><input type="checkbox" name="coverage" value="Coverage Review"><span>Coverage Review</span></label>
+            <label class="chip"><input type="checkbox" name="coverage" value="Not sure yet"><span>Not sure yet</span></label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="q-currentlyInsured">Currently insured?</label>
+            <select id="q-currentlyInsured" name="currentlyInsured">
+              <option value="">Select&hellip;</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="Policy expiring soon">Policy expiring soon</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="q-preferredContact">Preferred contact method</label>
+            <select id="q-preferredContact" name="preferredContact">
+              <option value="">Select&hellip;</option>
+              <option value="Phone call">Phone call</option>
+              <option value="Text message">Text message</option>
+              <option value="Email">Email</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="q-notes">Anything else Michelle should know?</label>
+          <textarea id="q-notes" name="notes" rows="4"></textarea>
+        </div>
+
+        <label class="consent-check">
+          <input type="checkbox" name="smsConsent" value="yes">
+          <span>I agree to receive customer-care text messages from Viquez Insurance Services about my quote and policy. Reply STOP to opt out, HELP for help. Msg &amp; data rates may apply. See <a href="#privacy-policy">Privacy Policy</a> and <a href="#terms-of-service">Terms of Service</a>.</span>
+        </label>
+
+        <!-- honeypot: hidden from real users, catches bots -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="q-company_website">Leave this field empty</label>
+          <input type="text" id="q-company_website" name="company_website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="quote-submit-btn">Submit Quote Request</button>
+
+        <div class="form-status" id="quote-form-status" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    (function () {
+      var form = document.getElementById('quote-form');
+      if (!form) return;
+      var statusEl = document.getElementById('quote-form-status');
+      var submitBtn = document.getElementById('quote-submit-btn');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        statusEl.className = 'form-status';
+        statusEl.textContent = '';
+
+        var fd = new FormData(form);
+
+        // honeypot: if filled, silently drop (bot)
+        if (fd.get('company_website')) return;
+
+        var required = ['fullName', 'phone', 'email'];
+        for (var i = 0; i < required.length; i++) {
+          if (!String(fd.get(required[i]) || '').trim()) {
+            statusEl.className = 'form-status error';
+            statusEl.textContent = 'Please fill in your name, phone, and email.';
+            return;
+          }
+        }
+
+        var payload = {
+          fullName: fd.get('fullName'),
+          businessName: fd.get('businessName'),
+          phone: fd.get('phone'),
+          email: fd.get('email'),
+          state: fd.get('state'),
+          employees: fd.get('employees'),
+          coverage: fd.getAll('coverage'),
+          currentlyInsured: fd.get('currentlyInsured'),
+          preferredContact: fd.get('preferredContact'),
+          notes: fd.get('notes'),
+          smsConsent: fd.get('smsConsent') === 'yes',
+          company_website: fd.get('company_website')
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending\u2026';
+
+        fetch('/.netlify/functions/quote-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then(function (res) {
+            if (!res.ok) throw new Error('request-failed');
+            return res.json();
+          })
+          .then(function () {
+            form.reset();
+            statusEl.className = 'form-status success';
+            statusEl.textContent = 'Thanks\u2014your request is on its way. Michelle will follow up shortly.';
+          })
+          .catch(function () {
+            statusEl.className = 'form-status error';
+            statusEl.textContent = 'Something went wrong sending your request. Please call or text 310.598.6201 instead.';
+          })
+          .finally(function () {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Quote Request';
+          });
+      });
+    })();
+  </script>
 
   <!-- ===================== SMS & LEGAL ===================== -->
   <div class="wrap band legal">
