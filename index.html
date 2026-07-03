@@ -223,14 +223,14 @@
     padding: clamp(24px, 3.5vw, 40px);
     background: #fff;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0,1fr));
-    gap: 18px 40px;
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
   #vis-site .contact-card .row .k {
     font-size: .72rem; letter-spacing: .16em; text-transform: uppercase;
     color: var(--brass); font-weight: 600; margin-bottom: 4px;
   }
-  #vis-site .contact-card .row .v { color: var(--ink); font-size: 1.02rem; }
+  #vis-site .contact-card .row .v { color: var(--ink); font-size: 1.02rem; overflow-wrap: break-word; }
   #vis-site .contact-card .row .v a { border-bottom: 1px solid var(--line); }
   #vis-site .contact-card .row .v a:hover { border-color: var(--brass); }
 
